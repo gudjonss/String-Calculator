@@ -1,10 +1,11 @@
 package is.ru.stringcalculator;
 
 import static org.junit.Assert.assertEquals;
+import org.junit.rules.ExpectedException;
+import org.junit.Rule;
 import org.junit.Test;
 
 public class CalculatorTest {
-
 	@Test
 	public void testEmptyString() {
 		assertEquals(0, Calculator.add(""));
@@ -30,4 +31,10 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 
+  	
+    @Test(expected = Exception.class)
+	public void testNegatives()  {
+		Calculator.add("-1,-3,2");
+		throw new IllegalArgumentException();
+	}
 }

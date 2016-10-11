@@ -15,7 +15,11 @@ public class Calculator {
 		if (text.isEmpty()){
 			return result;
 		}
-
+		try{
+			checkNegatives(values);	
+		}catch(IllegalArgumentException e){
+			e.getMessage();
+		} 
 		result = sum(values);
 		
 		return result;
@@ -32,5 +36,17 @@ public class Calculator {
 		}
 
 		return result;
+	}
+
+	private static void checkNegatives (String[] vals) throws IllegalArgumentException{
+		String[] negatives;
+		String errorString = "";
+		for (int i = 0; i < vals.length; i++){
+			if(Integer.parseInt(vals[i]) < 0){
+				errorString = errorString + vals[i] + ",";
+			}
+		}
+		System.out.println(errorString);
+		throw new IllegalArgumentException("Negatives not allowed");
 	}
 }
