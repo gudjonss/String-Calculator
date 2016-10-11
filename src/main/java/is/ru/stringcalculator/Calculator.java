@@ -3,7 +3,20 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
-		return 0;
+		
+		int result = 0;
+
+		if (text.isEmpty()){
+			return result;
+		}
+
+		else{
+			result = Integer.parseInt(text);
+			return result;
+		}
 	}
+
+
+
 
 }
