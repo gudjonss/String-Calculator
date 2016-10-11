@@ -19,4 +19,15 @@ public class CalculatorTest {
 	public void testTwoNumbers() {
 		assertEquals(5, Calculator.add("1,4"));
 	}
+
+	@Test
+	public void testManyNumbers() {
+		assertEquals(100, Calculator.add("77,3,15,1,2,2"));
+	}
+
+	@Test
+	public void testNewline() {
+		assertEquals(6, Calculator.add("1\n2,3"));
+	}
+
 }
