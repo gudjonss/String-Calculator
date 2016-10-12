@@ -52,4 +52,14 @@ public class CalculatorTest {
 	public void testIgnoreBigNums() {
 		assertEquals(50, Calculator.add("5,45,1002"));
 	}
+
+	@Test
+	public void testDelimiter() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+
+	@Test
+	public void testExtraDelimiter() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
 }
