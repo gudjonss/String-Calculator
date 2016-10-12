@@ -27,7 +27,8 @@ public class Calculator {
 		int result = 0;
 		// Loop over the array and add the numbers stored there.
 		for(int i = 0; i < vals.length; i++){
-			result = result + Integer.parseInt(vals[i]);
+			if(Integer.parseInt(vals[i]) < 1000)
+				result = result + Integer.parseInt(vals[i]);
 		}
 
 		return result;
@@ -40,8 +41,8 @@ public class Calculator {
 				errorString = errorString + vals[i] + ",";
 			}
 		}
-		errorString = errorString.replaceAll(", $", "");
-		return errorString;
+		// Return our errorstring, but trim the trailing comma from the string.
+		return errorString.replaceAll(", $", "");
 	}
 }
 

@@ -41,9 +41,15 @@ public class CalculatorTest {
 		Calculator.add("-1,2");
 	}
 
-	@Test public void testManyNegatives(){
+	@Test 
+	public void testManyNegatives(){
 		thrown.expect(IllegalArgumentException.class);
 		thrown.expectMessage("Negatives not allowed: -1,-2,-3");
 		Calculator.add("-1,-2,-3,4,5,6");
+	}
+
+	@Test 
+	public void testIgnoreBigNums() {
+		assertEquals(50, Calculator.add("5,45,1002"));
 	}
 }
