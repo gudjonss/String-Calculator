@@ -6,22 +6,17 @@ public class Calculator {
 	// Our main class method
 	public static int add(String text){
 		// Our return variable
-		int result = 0;
-
-		// Replace all newline characters with commas, then split the string on commas.
+		int result = 0;		
+		// Create an array with our numbers, commas and newlines removed.
 		String[] values = text.replaceAll("\n", ",").split(",");
-
+		if(text.contains("-"))
+			throw new IllegalArgumentException(createMessage(values));
 		// If the string is empty we immediatly return 0.
 		if (text.isEmpty()){
 			return result;
 		}
-		
-		checkNegatives(values);	
-		//catch(IllegalArgumentException e){
-		//	e.getMessage();
-		
-		result = sum(values);
-		
+
+		result = sum(values);		
 		return result;
 	}
 
@@ -38,15 +33,15 @@ public class Calculator {
 		return result;
 	}
 
-	private static void checkNegatives (String[] vals) throws IllegalArgumentException{
-		String errorString = "";
+	private static String createMessage(String[] vals){
+		String errorString = "Negatives not allowed: ";
 		for (int i = 0; i < vals.length; i++){
 			if(Integer.parseInt(vals[i]) < 0){
-				errorString = errorString + vals[i];
+				errorString = errorString + vals[i] + ",";
 			}
 		}
-		System.out.println(errorString);
-		if(!errorString.isEmpty())
-			throw new IllegalArgumentException("Negatives not allowed: -1");
+		errorString = errorString.replaceAll(", $", "");
+		return errorString;
 	}
 }
+
