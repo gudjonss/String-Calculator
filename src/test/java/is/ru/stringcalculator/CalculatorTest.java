@@ -31,10 +31,13 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 
-  	
-    @Test(expected = Exception.class)
-	public void testNegatives()  {
-		Calculator.add("-1,-3,2");
-		throw new IllegalArgumentException();
+  	@Rule
+  	public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+	public void testNegative()  {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("Negatives not allowed: -1");
+		Calculator.add("-1,2");
 	}
 }
